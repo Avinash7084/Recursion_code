@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+void sumOfNumber(int n, int sum) {
+    if (n == 0) {
+        cout << sum;
+        return;
+    }
+    sumOfNumber(n - 1, sum + n);
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    sumOfNumber(n, 0);
+    return 0;
+}
