@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+int mazePath(int sRow, int sCol,int eRow,int eCol){
+    if(sRow>eRow || sCol>eCol) return 0;
+    if(sRow==eRow && sCol==eCol) return 1;
+    int rightPath = mazePath(sRow,sCol+1,eRow,eCol);
+    int downPath = mazePath(sRow+1,sCol,eRow,eCol);
+    return rightPath + downPath;
+}
+
+void showPath(int sRow, int sCol,int eRow,int eCol,string s){
+    if (sRow>eRow || sCol>eCol) return ;
+    if(sRow==eRow && sCol==eCol){
+        cout<<s<<endl;
+        return ;
+    }
+    showPath(sRow,sCol+1,eRow,eCol,s+'R');
+    showPath(sRow+1,sCol,eRow,eCol,s+'D');
+}
+
+
+int main(){
+    int sRow,sCol,eRow,eCol;
+    cout<<"enter start row and start column number : ";
+    cin>>sRow>>sCol;
+    cout<<"enter end row and end col number : ";
+    cin>>eRow>>eCol;
+    cout<<mazePath(sRow,sCol,eRow,eCol)<<endl;
+    showPath(sRow,sCol,eRow,eCol,"");
+    
+}
