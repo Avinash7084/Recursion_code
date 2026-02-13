@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+void skip(string str,int n,int idx,string str2){
+    
+    if(n==idx){
+        cout<<str2;
+        return;
+    }
+    if(str[idx] != 'a'){
+      str2 += str[idx];
+    }
+    
+    skip(str,n,idx+1,str2);
+}
+
+int main(){
+    string str = "Avinash pandey";
+    string str2 = "";
+    int n = sizeof(str)/sizeof(str[0]);
+    skip(str,n,0,str2);
+}
